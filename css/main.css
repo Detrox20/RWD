@@ -1,15 +1,73 @@
+@import url("https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css");
+@import url(./normalize.css);
+/* 스타일 초기화 */
+.resetMargin {
+  margin: 0;
+}
+.resetList {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+.resetBox {
+  margin: 0;
+  padding: 0;
+  border: 0 none;
+}
+.buttonNone {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}
+.button {
+  cursor: pointer;
+}
+/* 숨김 컨텐츠 */
+.a11y-hidden,
+legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  background-color: blue;
+  clip: rect(0, 0, 0, 0); /* 포지션 absolute만 가능 */
+  clip-path: polygon(0 0, 0 0, 0 0);
+}
+/* 링크 스타일 */
+a {
+  text-decoration: none;
+  color: black;
+}
 /* 기본 스타일 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 html {
   font-size: 10px;
 }
 body {
-  margin: 0;
+  font-family: "Spoqa Han Sans", sans-serif;
   font-size: 1.6rem;
 }
-/* 모바일 & 데스크탑 공통 */
-.appHeader {
-  background-color: skyblue;
+/* 기본 Box Sizing */
+body *,
+body *::before,
+body *::after {
+  box-sizing: border-box;
 }
+/* 하이퍼 링크 스타일 */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+/* 모바일 & 데스크탑 공통 */
 .appNavigation {
   background-color: orange;
 }
@@ -19,19 +77,41 @@ body {
 .appFooter {
   background-color: purple;
 }
-
+.appHeader__list {
+  list-style: none;
+}
 /* 공통 컨테이너 */
 .container {
-  background-color: silver;
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
 }
+.appHeader {
+  width: 100%;
+  padding-bottom: 10px;
+}
+.appHeader__logo a {
+  display: block;
+  outline-offset: 1px;
+}
+
+/* .appHeader__list {
+  text-align: right;
+  white-space: nowrap;
+  padding-right: 0;
+}
+.appHeader__list li {
+  display: inline-block;
+  line-height: 30px;
+}
+.appHeader__list a {
+  display: inline-block;
+  padding: 5px 15px;
+  margin: 0;
+} */
 .appMain {
   display: flex;
   flex-flow: row wrap;
-}
-body {
-  background-color: skyblue;
 }
 @media screen and (max-width: 999px) {
   /* 모바일 컨테이너 */
@@ -43,12 +123,137 @@ body {
   .appFooter {
     width: 100%;
   }
-  .appNavigation {
-    display: none;
-  }
+  /* 모바일 헤더 */
+  /* .appHeader {
+    position: relative;
+  } */
   .appHeader {
-    height: 15vh;
+    display: flex;
+    flex-flow: row wrap;
+    background: rgb(56, 48, 46);
+    padding-bottom: 20px;
   }
+  .appHeader__logo,
+  .appHeader__list,
+  .appHeader__searchForm {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  /* 모바일 리스트 */
+  /* .appHeader__logo {
+    margin-top: 30px;
+  }
+  .appHeader__logo::after {
+    background-color: darkslategrey;
+    float: right;
+    content: "하이";
+  } */
+  .appHeader__logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .appHeader__logo img {
+    padding: 10px 0;
+  }
+  .appHeader__logo::after {
+    content: "하이";
+    background: url(./images/);
+  }
+  /* 모바일 멤버 */
+  /* .appHeader__list {
+    text-align: right;
+    white-space: nowrap;
+    position: absolute;
+    background-color: darkviolet;
+    top: 0;
+    right: 0;
+  }
+  .appHeader__list li {
+    color: #f7f7f7;
+    display: inline-block;zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
+    line-height: 30px;
+  }
+  .appHeader__list a {
+    display: inline-block;
+    padding: 5px 15px;
+    margin: 0;
+  } */
+  .appHeader__list {
+    background-color: rgb(152, 133, 116);
+    order: -1;
+    text-align: right;
+    color: #f7f7f7;
+    white-space: nowrap;
+    padding-right: 0;
+  }
+  .appHeader__list li {
+    display: inline-block;
+    line-height: 30px;
+  }
+  .appHeader__list a {
+    display: inline-block;
+    padding: 5px 15px;
+    margin: 0;
+  }
+  /* 모바일 검색폼 */
+  .appHeader__searchForm {
+    text-align: center;
+    padding: 0;
+    white-space: nowrap;
+  }
+  .appHeader__searchForm input,
+  .appHeader__searchForm button {
+    vertical-align: middle;
+  }
+  .appHeader__searchForm input {
+    width: calc(100% - 60px); /* 유연한 단위(붙여쓰면 안됨) */
+    height: 30px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 2px 5px;
+    margin-right: 5px;
+  }
+  .appHeader__searchForm button {
+    overflow: hidden;
+    text-indent: 150px;
+    background: url(./images/btn_search.png) no-repeat;
+    background-size: contain; /* 100% 100% */
+    border: 0 none;
+    white-space: nowrap;
+    width: 30px;
+    height: 30px;
+  }
+  /* 모바일 네비게이션 */
+  .appNavigation {
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
+  }
+  .appNavigation__menu {
+    background-color: teal;
+    list-style: none;
+  }
+  .appNavigation__menu--item {
+  }
+  .appNavigation__menu--item::before {
+    content: "+";
+    display: inline-block;
+  }
+  .appNavigation__menu--item--list {
+    background-color: tomato;
+    display: flex;
+    flex-flow: column wrap;
+    position: absolute;
+    display: none;
+    list-style: none;
+  }
+  .appNavigation__menu--item--list--active {
+    display: block;
+    position: relative;
+  }
+  /* 모바일 메인 */
   .appMain {
     height: 70vh;
   }
@@ -66,27 +271,290 @@ body {
 }
 @media screen and (min-width: 1000px) {
   /* 데스크탑 컨테이너 */
-  .container {
-    background-color: pink;
-    justify-content: center;
+  .appHeader {
+    display: grid;
+    grid-template-columns: 1fr 220px 260px;
+    grid-template-rows: 30px 50px;
+    padding: 0;
+    background-color: #f7f7f7;
+    padding-bottom: 5px;
   }
   .appHeader,
   .appMain {
-    width: 1000px;
+    width: 1500px;
   }
+  .appHeader__logo {
+    grid-row: 1 / 3;
+    margin: 10px;
+    padding-left: 10px;
+  }
+  .appHeader__list::before {
+    background-color: darkblue;
+  }
+  .appHeader__list {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 0;
+    font-size: 1.2rem;
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    font-weight: 400;
+  }
+  .appHeader__list a {
+    padding: 5px 15px;
+  }
+  .appHeader__searchForm {
+    grid-column: 2 / 4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    vertical-align: middle;
+  }
+  .appHeader__searchForm fieldset {
+    border: 0px;
+  }
+  .appHeader__searchForm input {
+    border: 2px solid rgb(80, 63, 46);
+    width: 400px;
+    height: 30px;
+    font-size: 1.4rem;
+    border-radius: 5px;
+    padding-left: 10px;
+  }
+  .appHeader__searchForm button {
+    border: 2px solid rgb(80, 63, 46);
+    width: 55px;
+    height: 30px;
+    margin-right: 10px;
+    background-color: #a58567;
+    color: #f7f7f7;
+    border-radius: 5px;
+    font-size: 1.4rem;
+  }
+  /* .container {
+  }
+  .appHeader {
+    position: relative;
+  }
+  .appHeader__logo {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background-color: pink;
+    margin-left: -40px;
+  }
+  .appHeader__list {
+    background-color: red;
+  }
+  .appHeader__list li {
+  }
+  .appHeader__searchForm {
+    text-align: right;
+  }
+  .appHeader__searchForm input {
+    width: 40%;
+  }
+  .appHeader__searchForm button {
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    background-color: #988574;
+    padding: 0 1rem;
+    height: 30px;
+    color: white;
+  } */
+  /* 네비게이션 */
   .appNavigation,
   .appFooter {
     width: 100%;
   }
-  .appHeader {
-    height: 10vh;
-  }
   .appNavigation {
     height: 20vh;
   }
+  .appNavigation {
+    height: 165px;
+    background-color: #a58567;
+    display: flex;
+    justify-content: center;
+  }
+  .appNavigation__heading {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    background-color: blue;
+    clip: rect(0, 0, 0, 0);
+    clip-path: polygon(0 0, 0 0, 0 0);
+  }
+  .appNavigation__menu {
+    background-color: seagreen;
+    display: flex;
+    justify-content: space-evenly;
+    width: 1500px;
+  }
+  .appNavigation__menu--item {
+    list-style: none;
+    background-color: tomato;
+    margin-top: 10px;
+    font-size: 1.8rem;
+  }
+  .appNavigation__menu--item--list {
+    background-color: turquoise;
+  }
+  .appNavigation__menu--item--list li {
+    padding: 5px;
+    font-size: 1.6rem;
+    margin-top: 5px;
+  }
+  /* 메인 메뉴 */
+  h3 {
+    font-size: 1.6rem;
+    line-height: 1.15;
+    font-weight: bold;
+  }
   .appMain {
-    height: 60vh;
-    justify-content: space-between;
+    width: 1500px;
+    height: 980px;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 5fr 6fr 4fr;
+    grid-template-rows: 680px 280px;
+  }
+  .appMain ul {
+    list-style: none;
+  }
+  .appMain__heading {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    background-color: blue;
+    clip: rect(0, 0, 0, 0);
+    clip-path: polygon(0 0, 0 0, 0 0);
+  }
+  .appMain__book {
+    background-color: violet;
+    display: flex;
+    flex-flow: row wrap;
+  }
+  .appMain__book--title {
+    background: url(./images/sprite_main.png) no-repeat;
+    height: 60px;
+    padding-left: 65px;
+    padding-top: 10px;
+  }
+  .appMain__book--title span {
+    display: block;
+    color: #abd372;
+  }
+  .appMain__book--image {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin: 0 auto;
+    width: 80%;
+    height: auto;
+  }
+  .appMain__book--image img {
+    width: 100%;
+  }
+  .appMain__book--image figcaption {
+    font-size: 1.5rem;
+  }
+  .appMain__book--info {
+    background-color: crimson;
+    margin: 0 auto;
+    display: flex;
+    font-size: 1.4rem;
+    width: 150px;
+    height: 30px;
+    justify-content: center;
+  }
+  .appMain__book--info dt {
+    background-color: darkgreen;
+  }
+  .appMain__book--info dd {
+    background-color: darkcyan;
+    margin-left: 5px;
+  }
+  .appMain__book--summary {
+    background-color: darkred;
+  }
+  .appMain__news {
+    grid-column: 2 / 4;
+    background-color: yellow;
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
+  }
+  .appMain__news--title {
+    width: 100%;
+    background: url(./images/sprite_main.png) no-repeat 0 -230px;
+    height: 60px;
+    padding-left: 65px;
+    padding-top: 10px;
+  }
+  .appMain__news--title span {
+    display: block;
+    color: #e8ca58;
+  }
+  .appMain__news--container {
+    background-color: coral;
+    display: flex;
+    justify-content: center;
+  }
+  .appMain__news--container video {
+    background-color: cadetblue;
+    width: 90%;
+  }
+  .appMain__news span {
+    background-color: burlywood;
+  }
+  .appMain__news time {
+    background-color: brown;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  .appMain__board {
+    background-color: teal;
+  }
+  .appMain__board--title {
+    background: url(./images/sprite_main.png) no-repeat 0 -115px;
+    height: 60px;
+    padding-left: 65px;
+    padding-top: 10px;
+  }
+  .appMain__board--title span {
+    display: block;
+    color: #c7b39a;
+  }
+  .appMain__board--list {
+  }
+  .appMain__twitter {
+    background-color: tomato;
+  }
+  .appMain__twitter--title {
+    background: url(./images/sprite_main.png) no-repeat 0 -460px;
+    height: 60px;
+    padding-left: 65px;
+    padding-top: 10px;
+  }
+  .appMain__twitter--title span {
+    display: block;
+    color: #6aaee6;
+  }
+  .appMain__favorite {
+    background-color: aqua;
+  }
+  .appMain__favorite--title {
+    background: url(./images/sprite_main.png) no-repeat 0 -345px;
+    height: 60px;
+    padding-left: 65px;
+    padding-top: 10px;
+  }
+  .appMain__favorite--title span {
+    display: block;
+    color: #eea60a;
   }
   .book {
     width: 320px;
