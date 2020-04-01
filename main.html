@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Webcafe - RWD</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <script src="./js/main.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="appHeader">
+        <h1 class="appHeader__logo resetMargin">
+          <a href="./index.html">
+            <img src="./images/webcafe-logo.png" alt="Web-Cafe" />
+          </a>
+        </h1>
+        <ul class="appHeader__list resetList">
+          <li>
+            <a href="#">로그인</a>
+          </li>
+          <li>
+            <span class="divider" aria-hidden="true">|</span
+            ><a href="#">회원가입</a>
+          </li>
+          <li>
+            <span class="divider" aria-hidden="true">|</span
+            ><a href="#">커뮤니티</a>
+          </li>
+        </ul>
+        <form
+          action="#"
+          role="search"
+          class="appHeader__searchForm"
+          method="POST"
+        >
+          <fieldset class="resetBox">
+            <legend>서치폼</legend>
+            <label for="appHeader__searchBar"></label>
+            <input
+              type="search"
+              name="search"
+              id="appHeader__searchBar"
+              required
+              placeholder="검색어를 입력하세요."
+            />
+            <button type="submit" class="buttonNone buttonSearch">검색</button>
+          </fieldset>
+        </form>
+      </header>
+      <nav class="appNavigation" aria-labelledby="menuTitle">
+        <h2 class="appNavigation__heading a11y-hidden" id="menuTitle">
+          메인 메뉴
+        </h2>
+        <button
+          type="button"
+          class="buttonNone buttonBurger"
+          aria-label="메뉴 열기"
+          title="메뉴 열기"
+        >
+          <span class="burgerBar round positionTop"></span>
+          <span class="burgerBar round positionMiddle"></span>
+          <span class="burgerBar round positionBottom"></span>
+        </button>
+        <ul class="appNavigation__menu">
+          <li
+            class="appNavigation__menu--item appNavigation__menu--item--active"
+          >
+            <a href="#">HTML에 대해</a>
+            <ul
+              class="appNavigation__menu--item--list appNavigation__menu--item--list--active"
+            >
+              <li><a href="#">HTML5 소개</a></li>
+              <li><a href="#">래퍼런스 소개</a></li>
+              <li><a href="#">활용 예제</a></li>
+            </ul>
+          </li>
+          <li class="appNavigation__menu--item">
+            <a href="#">CSS에 대해</a>
+            <ul class="appNavigation__menu--item--list">
+              <li><a href="#">CSS 소개</a></li>
+              <li><a href="#">CSS2 VS CSS3</a></li>
+              <li><a href="#">CSS 애니메이션</a></li>
+            </ul>
+          </li>
+          <li class="appNavigation__menu--item">
+            <a href="#">웹표준/웹접근성</a>
+            <ul class="appNavigation__menu--item--list">
+              <li><a href="#">웹표준 이란?</a></li>
+              <li><a href="#">웹접근성의개요</a></li>
+              <li><a href="#">HTML5의 현재와 미래</a></li>
+            </ul>
+          </li>
+          <li class="appNavigation__menu--item">
+            <a href="#">묻고 답하기</a>
+            <ul class="appNavigation__menu--item--list">
+              <li><a href="#">묻고 답하기</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">1대1 질문</a></li>
+            </ul>
+          </li>
+          <li class="appNavigation__menu--item">
+            <a href="#">자료실</a>
+            <ul class="appNavigation__menu--item--list">
+              <li><a href="#">공개 자료</a></li>
+              <li><a href="#">이미지 자료실</a></li>
+              <li><a href="#">예제 자료실</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <main class="appMain">
+        <h2 class="appMain__heading">메인메뉴</h2>
+        <section class="appMain__book">
+          <h3 class="appMain__book--title">
+            추천서적 <span>Recommand Book</span>
+          </h3>
+          <figure class="appMain__book--image">
+            <img src="./images/book_rwd.jpg" alt="Recommand Book" />
+            <figcaption>반응형웹 핵심 가이드북 도서</figcaption>
+          </figure>
+          <dl class="appMain__book--info">
+            <dt>저자</dt>
+            <dd>김데레사</dd>
+            <dd class="a11y-hidden">평점</dd>
+          </dl>
+          <p class="appMain__book--summary">
+            반응형웹 디자인을 위한 핵심 내용을 다루고 있으며 미디어쿼리, 유연한
+            레이아웃, 반응형 이미지 기법을 학습할 수 있다. 모바일 및 다양한
+            해상도에 대응이 가능한 웹디자인을 이 책으로 시작해 보자!
+          </p>
+        </section>
+        <section class="appMain__news">
+          <h3 class="appMain__news--title">새소식 <span>WebCafe News</span></h3>
+          <figure class="appMain__news--container">
+            <video
+              src="./media/Google Developer Stories.mp4"
+              type="video/mp4"
+              poster="./media/poster.jpg"
+              alt="Google Developer Stories"
+              controls
+            ></video>
+          </figure>
+          <span>
+            구글플레이는 다양한 분야에서 활약하고 있는 국내 개발사들을 모시고
+            직접 이야기를 나눠보는 ‘구글플레이 개발자와의 대화’ 행사를
+            정기적으로 개최할 예정입니다. 오늘 3월 29일(수) 구글 캠퍼스 서울에서
+            열린 첫 번째 ‘구글플레이 개발자와의 대화’는 ‘해외에서 빵터진 한국
+            앱'을 주제로 진행됐는데요, 국내 앱 시장은 물론 글로벌 시장에서도
+            주목 받으며 글로벌 진출의 본보기가 되고 있는 개발사 세 곳과 함께
+            했습니다.
+          </span>
+          <time datetime="2020.03.27">2020.03.27</time>
+        </section>
+        <section class="appMain__board">
+          <h3 class="appMain__board--title">
+            게시판 <span>WebCafe Board</span>
+          </h3>
+          <ul class="appMain__board--list">
+            <li>HTML의 모든 것을 알려드립니다.</li>
+            <li>W3C 사이트 리뉴얼 및 ...</li>
+            <li>KWCAG 2.1 소식</li>
+            <li>서버 점검으로 인한 사이..</li>
+            <li>여러분들이 생각하는 웹...</li>
+          </ul>
+        </section>
+        <section class="appMain__twitter">
+          <h3 class="appMain__twitter--title">
+            트위터 <span>WebCafe Twitter</span>
+          </h3>
+          <div>김데레사 seulbinim</div>
+          <div>웹표준 핵심가이드북 ㅡㅡㅡ</div>
+          <time datetime="2020.03.27">2020.03.27</time>
+          <img src="" alt="" />
+        </section>
+        <section class="appMain__favorite">
+          <h3 class="appMain__favorite--title">
+            인기 사이트 <span>Favorite Site</span>
+          </h3>
+          <ul class="appMain__favorite--list">
+            <li>
+              <a href="#">Learn CSS Layout</a>
+            </li>
+            <li>
+              <a href="#">Flexbox Froggy</a>
+            </li>
+            <li>
+              <a href="#">CSS Grid Garden</a>
+            </li>
+            <li>
+              <a href="#">MDN Web Does</a>
+            </li>
+          </ul>
+        </section>
+      </main>
+      <footer class="appFooter">
+        <h2 class="appFooter__title">푸터</h2>
+        <address class="appFooter__address">
+          서울시 마포구 상수동 123-12 한주빌딩 5층 전화: 02-234-5678
+          이메일:seulbinim@gmail.com
+        </address>
+        <small class="appFooter__small">
+          COPYRIGHT SINCE - 2010 BY WEB CAFE CORPORATION ALL RIGHTS RESERVED.
+        </small>
+      </footer>
+    </div>
+  </body>
+</html>
